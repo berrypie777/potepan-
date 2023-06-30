@@ -1,7 +1,11 @@
 inherit_from:
   - .rubocop_airbnb.yml
 
+Rails:
+  Enabled: true
+
 AllCops:
+  NewCops: enable
   Exclude:
     - 'db/**/*'
     - 'bin/*'
