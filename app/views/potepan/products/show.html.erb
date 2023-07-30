@@ -38,10 +38,11 @@
             <div class="clearfix">
               <div id="thumbcarousel" class="carousel slide" data-interval="false">
                 <div class="carousel-inner">
-                    <div data-target="#carousel" data-slide-to="0" class="thumb"><%= image_tag("img/products/signle-product/product-slide-small-01.jpg") %></div>
-                    <div data-target="#carousel" data-slide-to="1" class="thumb"><%= image_tag("img/products/signle-product/product-slide-small-02.jpg") %></div>
-                    <div data-target="#carousel" data-slide-to="2" class="thumb"><%= image_tag("img/products/signle-product/product-slide-small-03.jpg") %></div>
-                    <div data-target="#carousel" data-slide-to="3" class="thumb"><%= image_tag("img/products/signle-product/product-slide-small-04.jpg") %></div>
+                  <% @product.images.each_with_index do |image, index| %>
+                    <div data-target="#carousel" data-slide-to="<%= index %>" class="thumb">
+                      <%= image_tag image.attachment.url(:small) %>
+                    </div>
+                  <% end %>    
                 </div>
                 <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span>
@@ -57,9 +58,9 @@
               <li><a href="product_grid_left_sidebar.html"><i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る</a></li>
               <!-- <li><a href="#"><i class="fa fa-plus" aria-hidden="true"></i>Share This</a></li> -->
             </ul>
-            <h2>Pellentesque non risus quis tellus</h2>
-            <h3>149円</h3>
-            <p>Mauris lobortis augue ex, ut faucibus nisi mollis ac. Sed volutpat scelerisque ex ut ullamcorper. Cras at velit quis sapien dapibus laoreet a id odio. Sed sit amet accumsan ante, eu congue metus. Aenean eros tortor, cursus quis feugiat sed, vestibulum vel purus. Etiam aliquam turpis quis blandit finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor placerat lectus, facilisis ornare leo tincidunt vel. Duis rutrum felis felis, eget malesuada massa tincidunt a.</p>
+            <h2><%= @product.name %></h2>
+            <h3><%= @product.display_price %></h3>
+            <p><%= @product.description %></p>
             <span class="quick-drop">
               <select name="guiest_id3" id="guiest_id3" class="select-drop">
                 <option value="0">S</option>
