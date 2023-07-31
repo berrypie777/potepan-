@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Potepan::Products", type: :request do
+RSpec.describe "Potepan::ProductsController", type: :request do
   describe "GET /potepan/products" do
     it "works! (now write some real specs)" do
       get potepan_products_index_path
