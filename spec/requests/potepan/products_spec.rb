@@ -6,7 +6,7 @@ RSpec.describe "Potepan::ProductsController", type: :request do
     let!(:product) { create(:product) }
 
     before do
-      get "/potepan/products/#{product.id}"
+      get potepan_product_path(product.id)
     end
 
     it "HTTP Status Code must be 200" do
@@ -17,8 +17,8 @@ RSpec.describe "Potepan::ProductsController", type: :request do
       expect(response).to render_template :show
     end
 
-    it "@product is successfully assigned" do
-      expect(assigns(:product)).to eq product
+    it "response body contains the product name" do
+      expect(response.body).to include(product.name)
     end
 
   end

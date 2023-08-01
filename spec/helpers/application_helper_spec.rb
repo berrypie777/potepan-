@@ -12,5 +12,10 @@ RSpec.describe ApplicationHelper, type: :helper do
       page_title = product.name
       expect(full_title(page_title)).to eq "#{page_title} - BIGBAG Store"
     end
+
+    it "returns error message when product name is nil" do
+      page_title = nil
+      expect{ full_title(page_title) }.to raise_error(RuntimeError, "Page title is nil")
+    end
   end
 end

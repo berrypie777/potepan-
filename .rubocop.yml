@@ -19,3 +19,4 @@ AllCops:
     - 'test/**/*'
     - 'spec/**/*'
     - 'config/**/*'
+    
