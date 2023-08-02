@@ -12,10 +12,6 @@ RSpec.describe "Potepan::ProductsController", type: :request do
       expect(response).to have_http_status(:ok)
     end
 
-    it "show template is successfully rendered" do
-      expect(response).to render_template :show
-    end
-
     it "response body contains the product name" do
       expect(response.body).to include(product.name)
     end

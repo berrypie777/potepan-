@@ -2,16 +2,20 @@ require 'rails_helper'
 
 RSpec.describe ApplicationHelper, type: :helper do
   describe "#full_title" do
-    let(:product) { create(:product) }
-
-    it "returns base title when page_title is nil" do
-      page_title = nil
-      expect(full_title(page_title)).to eq "BIGBAG Store"
+    subject { full_title(page_title) }
+  
+    context 'when page_title is nil' do
+      let(:page_title) { nil }  
+      it 'returns the base title' do
+        expect(subject).to eq("BIGBAG Store")
+      end
     end
-
-    it "returns the correct full title when page_title is provided" do
-      page_title = "Product"
-      expect(full_title(page_title)).to eq "#{page_title} - BIGBAG Store"
+  
+    context 'when page_title is provided' do
+      let(:page_title) { "Product" }
+      it 'returns the full title' do
+        expect(subject).to eq("Product - BIGBAG Store")
+      end
     end
-  end
+  end 
 end
