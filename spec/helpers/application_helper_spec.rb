@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ApplicationHelper, type: :helper do
   describe "#full_title" do
-    let(:product) { double("Product", name: "Single Product") }
+    let(:product) { create(:product) }
 
     it "returns base title when page_title is nil" do
       page_title = nil
@@ -10,7 +10,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it "returns the correct full title when page_title is provided" do
-      page_title = product.name
+      page_title = "Product"
       expect(full_title(page_title)).to eq "#{page_title} - BIGBAG Store"
     end
   end

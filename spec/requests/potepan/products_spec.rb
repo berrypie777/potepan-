@@ -1,8 +1,7 @@
 require 'rails_helper'
-require 'spree/testing_support/factories'
 
 RSpec.describe "Potepan::ProductsController", type: :request do
-  describe "potepan/products/show" do
+  describe "/potepan/products/:product_id" do
     let(:product) { create(:product) }
 
     before do
@@ -19,6 +18,14 @@ RSpec.describe "Potepan::ProductsController", type: :request do
 
     it "response body contains the product name" do
       expect(response.body).to include(product.name)
+    end
+
+    it "response body contains the product price" do
+      expect(response.body).to include(product.display_price.to_s)
+    end
+
+    it "response body contains the product description" do
+      expect(response.body).to include(product.description)
     end
   end
 end
