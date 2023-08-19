@@ -1,4 +1,4 @@
 module Potepan
-  class CategoriesController < ApplicationController    
+  class CategoriesController < ApplicationController
   end
 end
