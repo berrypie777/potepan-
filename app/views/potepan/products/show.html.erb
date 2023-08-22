@@ -36,7 +36,7 @@
           <div class="media-body">
             <ul class="list-inline">   
               <li>
-                <%= link_to potepan_category_path(@product.taxons.first.id) do %>
+                <%= link_to @product.taxons.first.present? ? potepan_category_path(@product.taxons.first.id) : potepan_index_url do %>
                   <i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る
                 <% end %>
               </li>
