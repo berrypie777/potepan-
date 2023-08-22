@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Potepan::Categories", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+RSpec.describe "Potepan::CategoriesController ", type: :request do
+  describe "potepan/categories/:taxon_id" do
+    
   end
 end
