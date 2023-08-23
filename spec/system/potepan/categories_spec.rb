@@ -6,8 +6,8 @@ RSpec.describe "Category Page", type: :system do
   let(:taxon) { create(:taxon, name:'Shirts', taxonomy:taxonomy, parent:taxonomy.root) }
   let(:taxon2) { create(:taxon, name:'Solidus', taxonomy:taxonomy2, parent:taxonomy2.root) }
   let(:taxon3) { create(:taxon, name:'Ruby', taxonomy:taxonomy2, parent:taxonomy2.root) }
-  let!(:product) { create(:product, name:'SOLIDUS GIRLY', taxons:[taxon, taxon2]) }
-  let!(:product2) { create(:product, name:'RUBY MUG', taxons:[taxon3]) }
+  let(:product) { create(:product, name:'SOLIDUS GIRLY', taxons:[taxon, taxon2]) }
+  let(:product2) { create(:product, name:'RUBY MUG', taxons:[taxon3]) }
   let(:image) { create(:image) }
 
   before do
@@ -51,5 +51,10 @@ RSpec.describe "Category Page", type: :system do
   it "Click on a product name to go to the correct product page"  do
     click_on product.name
     expect(current_path).to eq(potepan_product_path(product.id))
+  end
+
+  it "Porudcts count equal in the sidebar and in the list" do
+    list_products_count = page.all(".productBox").count
+    expect(list_products_count).to eq(taxon.products.count)
   end
 end

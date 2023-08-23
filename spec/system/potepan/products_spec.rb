@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Potepan::Products", type: :system do
+RSpec.describe "Products Page", type: :system do
   let(:taxon) { create(:taxon) }
-  let!(:product) { create(:product, taxons:[taxon]) }
+  let(:product) { create(:product, taxons:[taxon]) }
   let(:image) { create(:image) }
 
   before do
