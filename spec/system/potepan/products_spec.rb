@@ -11,12 +11,7 @@ RSpec.describe "Potepan::Products", type: :system do
   end
 
   it "Redirects to category page when the link is clicked" do
-    if product.taxons.first.present?
-      click_on "一覧ページへ戻る"
-      expect(current_path).to eq(potepan_category_path(taxon.id))
-    else
-      click_on "一覧ページへ戻る"
-      expect(current_path).to eq(potepan_index_url)
-    end  
+    click_on "一覧ページへ戻る"
+    expect(current_path).to eq(potepan_category_path(taxon.id))
   end
 end
