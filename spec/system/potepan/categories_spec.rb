@@ -15,6 +15,11 @@ RSpec.describe "Category Page", type: :system do
     visit potepan_category_path(taxon.id)
   end
 
+  it "Correct links are displayed in page header" do
+    expect(page).to have_css('.breadcrumb.pull-right li', text: 'HOME')
+    expect(page).to_not have_css('.breadcrumb.pull-right li', text: 'SHOP')
+  end
+
   it "Category informartions are displayed in the sidebar" do
     within ".side-nav" do
       expect(page).to have_content(taxonomy.name)

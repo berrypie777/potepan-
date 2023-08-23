@@ -10,6 +10,11 @@ RSpec.describe "Potepan::Products", type: :system do
     visit potepan_product_path(product.id)
   end
 
+  it "Correct links are displayed in page header" do
+    expect(page).to have_css('.breadcrumb.pull-right li', text: 'HOME')
+    expect(page).to have_css('.breadcrumb.pull-right li', text: 'SHOP')
+  end
+
   it "Redirects to category page when the link is clicked" do
     click_on "一覧ページへ戻る"
     expect(current_path).to eq(potepan_category_path(taxon.id))
