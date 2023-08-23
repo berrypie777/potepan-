@@ -1,5 +1,5 @@
 <% provide(:title, @taxon.name) %>
-<%= render partial: 'layouts/page_header', locals: { product: @product, taxon: @taxon } %>
+<%= render 'layouts/page_header', name: @taxon.name %>
 <section class="mainContent clearfix productsContent">
   <div class="container">
     <div class="row">
