@@ -17,7 +17,7 @@ RSpec.describe "Category Page", type: :system do
 
   it "Correct links are displayed in page header" do
     expect(page).to have_css('.breadcrumb.pull-right li', text: 'HOME')
-    expect(page).to_not have_css('.breadcrumb.pull-right li', text: 'SHOP')
+    expect(page).to have_css('.breadcrumb.pull-right li', text: 'SHOP')
   end
 
   it "Category informartions are displayed in the sidebar" do
