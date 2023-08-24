@@ -44,7 +44,6 @@ RSpec.describe "Category Page", type: :system do
   end
 
   it "Products that do not belong to a category are not displayed" do
-    click_on taxon.name
     expect(page).not_to have_content(product2.name)
   end
 
