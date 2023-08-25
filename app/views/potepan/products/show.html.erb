@@ -1,5 +1,5 @@
 <% provide(:title, @product.name) %>
-<%= render 'layouts/productheader' %>
+<%= render 'layouts/page_header', name: @product.name %>
 <section class="mainContent clearfix">
   <div class="container">
     <div class="row singleProduct">
@@ -34,9 +34,9 @@
             </div>
           </div>
           <div class="media-body">
-            <ul class="list-inline">            
+            <ul class="list-inline">   
               <li>
-                <%= link_to potepan_product_grid_left_sidebar_url do %>
+                <%= link_to potepan_category_path(@product.taxons.first.id) do %>
                   <i class="fa fa-reply" aria-hidden="true"></i>一覧ページへ戻る
                 <% end %>
               </li>

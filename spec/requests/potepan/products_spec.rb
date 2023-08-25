@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe "Potepan::ProductsController", type: :request do
   describe "/potepan/products/:product_id" do
     let(:product) { create(:product) }
+    let(:taxon) { create(:taxon) }
 
     before do
+      product.taxons << taxon
       get potepan_product_path(product.id)
     end
 
