@@ -14,15 +14,9 @@ RSpec.describe "Potepan::ProductsController", type: :request do
       expect(response).to have_http_status(:ok)
     end
 
-    it "response body contains the product name" do
+    it "response body contains the product informations" do
       expect(response.body).to include(product.name)
-    end
-
-    it "response body contains the product price" do
       expect(response.body).to include(product.display_price.to_s)
-    end
-
-    it "response body contains the product description" do
       expect(response.body).to include(product.description)
     end
   end
