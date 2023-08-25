@@ -4,9 +4,9 @@ RSpec.describe "Potepan::CategoriesController ", type: :request do
   describe "GET categories/show" do
       let(:taxonomy) { create(:taxonomy) }
       let(:taxon) { create(:taxon, parent_id: taxonomy.root) }
-      let(:taxon2) { create(:taxon, parent_id: taxonomy.root) }
+      let(:taxon2) { create(:taxon, parent_id: taxonomy.root) }     
       let(:product) { create(:product, taxons: [taxon]) }
-      let(:product2) { create(:product, taxons: [taxon2]) }
+      let(:product2) {create(:product, taxons: [taxon2], price: 20) }
       let(:image) { create(:image) }
 
       before do
