@@ -9,11 +9,9 @@ RSpec.describe Potepan::ProductDecorator, type: :model do
     let(:unrelated_product) { create(:product) }
 
     it "returns related products correctly" do
-      related_products.each do |related_product|
-        expect(product.related_products).to include(related_product)
-      end
-        expect(product.related_products).to_not include(unrelated_product)
-        expect(product.related_products).to_not include(product)
+      expect(product.related_products).to match_array(related_products)
+      expect(product.related_products).to_not include(unrelated_product)
+      expect(product.related_products).to_not include(product)
     end
 
     it "No duplication of related products" do
