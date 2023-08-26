@@ -21,11 +21,14 @@ RSpec.describe "Potepan::ProductsController", type: :request do
       expect(response.body).to include(product.description)
     end
 
-    it "response body contains the related products informations" do
-      related_products = product.related_products
-      related_products.each do |related_product|
+    it "response body contains the four related products informations" do
+      product.related_products.each_with_index do |related_product, index|
         expect(response.body).to include(related_product.name)
         expect(response.body).to include(related_product.display_price.to_s)
+      if index >= 4
+        expect(response.body).to_not include(related_product.name)
+        expect(response.body).to_not include(related_product.display_price.to_s)
+      end
       end
     end
   end

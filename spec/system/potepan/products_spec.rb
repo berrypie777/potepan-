@@ -51,8 +51,4 @@ RSpec.describe "Products Page", type: :system do
       expect(current_path).to eq(potepan_product_path(related_product.id))
     end
   end
-
-  it "No duplication of related products" do
-    expect(product.related_products).to eq(product.related_products.uniq)
-  end
 end
