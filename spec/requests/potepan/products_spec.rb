@@ -5,8 +5,9 @@ RSpec.describe "Potepan::ProductsController", type: :request do
     let(:product) { create(:product) }
     let(:taxon) { create(:taxon) }
     let(:related_products) do
-      create_list(:product, 5, taxons: [taxon]) do |related_product|
-        related_product.price = rand(10..20) 
+      prices = [10, 12, 15, 18, 20]
+      create_list(:product, 5, taxons: [taxon]).each_with_index do |related_product, index|
+        related_product.price = prices[index]
         related_product.save
       end
     end
