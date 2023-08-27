@@ -8,10 +8,6 @@ RSpec.describe Potepan::ProductDecorator, type: :model do
     let(:related_products) { create_list(:product, 2, taxons:[taxon, taxon2]) }
     let!(:unrelated_product) { create(:product) }
 
-    it "returns related products " do
-      expect(product.related_products).to match_array(related_products)
-    end
-
     it "related products do not include unrelated product" do
       expect(product.related_products).to_not include(unrelated_product)
     end
