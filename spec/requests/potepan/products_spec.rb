@@ -33,7 +33,7 @@ RSpec.describe "Potepan::ProductsController", type: :request do
     end
 
     it "response body contains the related products" do
-      product.related_products.each do |related_product|
+      product.related_products.all? do |related_product|
         expect(response.body).to include(related_product.name)
         expect(response.body).to include(related_product.display_price.to_s)
       end

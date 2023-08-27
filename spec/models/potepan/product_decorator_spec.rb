@@ -5,8 +5,8 @@ RSpec.describe Potepan::ProductDecorator, type: :model do
     let(:taxon) { create(:taxon) }
     let(:taxon2) { create(:taxon) }
     let(:product) { create(:product, taxons:[taxon, taxon2]) }
-    let(:related_products) { create_list(:product, 5, taxons:[taxon, taxon2]) }
-    let(:unrelated_product) { create(:product) }
+    let(:related_products) { create_list(:product, 2, taxons:[taxon, taxon2]) }
+    let!(:unrelated_product) { create(:product) }
 
     it "returns related products " do
       expect(product.related_products).to match_array(related_products)
