@@ -40,12 +40,17 @@ RSpec.describe "Potepan::ProductsController", type: :request do
     end
 
     it "response body contains the four related products" do
-      product.related_products.first(4).each_with_index do |related_product, index|
+      product.related_products.first(4).all? do |related_product|
         expect(response.body).to include(related_product.name)
         expect(response.body).to include(related_product.display_price.to_s)
       end
-      expect(response.body).not_to include(related_products[4].name)
-      expect(response.body).not_to include(related_products[4].display_price.to_s)
+    end
+
+    it "response body do not contain the fifth related product" do
+      product.related_products.all? do |related_product|
+        expect(response.body).not_to include(related_products[4].name)
+        expect(response.body).not_to include(related_products[4].display_price.to_s)  
+      end
     end
   end
 end
