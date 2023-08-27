@@ -1,12 +1,13 @@
 module Potepan
   class ProductsController < ApplicationController
+    RELATED_PRODUCTS_LIMIT = 4
+
     def show
-      max_related_products = 4
       @product = Spree::Product.find(params[:id])
       @related_products = @product.related_products.includes(master: [
         :default_price,
         :images,
-      ]).limit(max_related_products)
+      ]).limit(RELATED_PRODUCTS_LIMIT)
     end
   end
 end

@@ -23,7 +23,7 @@ RSpec.describe "Potepan::CategoriesController ", type: :request do
         expect(response.body).to include(taxon.name)
       end
 
-      it "response body contains product informations" do
+      it "response body contains product name and price" do
         expect(response.body).to include(product.name)
         expect(response.body).to include(product.display_price.to_s)
       end

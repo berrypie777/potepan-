@@ -20,13 +20,26 @@ RSpec.describe "Potepan::ProductsController", type: :request do
       expect(response).to have_http_status(:ok)
     end
 
-    it "response body contains the product informations" do
+    it "response body contains the product name" do
       expect(response.body).to include(product.name)
+    end
+
+    it "response body contains the product price" do
       expect(response.body).to include(product.display_price.to_s)
+    end
+
+    it "response body contains the product description" do
       expect(response.body).to include(product.description)
     end
 
-    it "response body contains the four related products informations" do
+    it "response body contains the related products" do
+      product.related_products.each do |related_product|
+        expect(response.body).to include(related_product.name)
+        expect(response.body).to include(related_product.display_price.to_s)
+      end
+    end
+
+    it "response body contains the four related products" do
       product.related_products.first(4).each_with_index do |related_product, index|
         expect(response.body).to include(related_product.name)
         expect(response.body).to include(related_product.display_price.to_s)
