@@ -4,7 +4,12 @@ RSpec.describe "Potepan::ProductsController", type: :request do
   describe "/potepan/products/:product_id" do
     let(:product) { create(:product) }
     let(:taxon) { create(:taxon) }
-    let(:related_products) { create(:product) }
+    let(:related_products) do
+      create_list(:product, 5, taxons: [taxon]) do |related_product|
+        related_product.price = rand(10..20) 
+        related_product.save
+      end
+    end
 
     before do
       product.taxons << taxon
@@ -22,14 +27,12 @@ RSpec.describe "Potepan::ProductsController", type: :request do
     end
 
     it "response body contains the four related products informations" do
-      product.related_products.each_with_index do |related_product, index|
+      product.related_products.first(4).each_with_index do |related_product, index|
         expect(response.body).to include(related_product.name)
         expect(response.body).to include(related_product.display_price.to_s)
-      if index >= 4
-        expect(response.body).to_not include(related_product.name)
-        expect(response.body).to_not include(related_product.display_price.to_s)
       end
-      end
+      expect(response.body).not_to include(related_products[4].name)
+      expect(response.body).not_to include(related_products[4].display_price.to_s)
     end
   end
 end

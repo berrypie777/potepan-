@@ -14,7 +14,7 @@ RSpec.describe Potepan::ProductDecorator, type: :model do
       expect(product.related_products).to_not include(product)
     end
 
-    it "No duplication of related products" do
+    it "no duplication of related products" do
       expect(product.related_products).to eq(product.related_products.uniq)
     end
   end
