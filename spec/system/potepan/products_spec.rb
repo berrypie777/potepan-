@@ -5,9 +5,8 @@ RSpec.describe "Products Page", type: :system do
   let(:taxon2) { create(:taxon) }
   let(:product) { create(:product, taxons:[taxon, taxon2]) }
   let(:related_products) do
-    prices = [10, 12, 15, 18, 20]
     create_list(:product, 5, taxons: [taxon]).each_with_index do |related_product, index|
-      related_product.price = prices[index]
+      related_product.price = 10.0 * index
       related_product.save
     end
   end
